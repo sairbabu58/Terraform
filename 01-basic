@@ -1,3 +1,9 @@
+Terraform State:
+ -> Manage and maintained the existing and latest changes. what is the current state and what going to change. the latest changes only applied.
+     Task 1: Show current state
+     Task 2: Update your configuration
+     Task 3: Plan and execute changes
+     Task 4: Show new state
 
 
 
