@@ -5,7 +5,7 @@ $ terraform fmt   #Make the right format on the files. space and indent ..etc
 $ terraform validate filename.tf  #Validate the syntax and code
 
 $ terraform init 
-$ terraform plan   #Dry run and it will show how many resources are getting create 
+$ terraform plan   #Dry run and it will show how many resources are going to create 
 
 $ terraform apply  #Apply and create the resources
 $ terraform apply -auto-approve #It will not ask yes 'confirm' to process the steps
