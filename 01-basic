@@ -19,3 +19,6 @@ $ terraform apply -auto-approve #It will not ask yes 'confirm' to process the st
 $ terraform destroy #Delete the resources
 $ terraform destroy -auto-approve
 
+$ terraform show   #Current status of your configuration
+$ terraform state list #Current state short description
+
