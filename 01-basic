@@ -6,19 +6,21 @@ Terraform State:
      Task 4: Show new state
 
 
+$ terraform -help
+$ terraform version
 
 $ terraform fmt   #Make the right format on the files. space and indent ..etc
-$ terraform validate filename.tf  #Validate the syntax and code
+$ terraform validate filename.tf  #Validate the syntax, code, vars and ..etc
 
-$ terraform init 
-$ terraform plan   #Dry run and it will show how many resources are going to create 
+$ terraform init   #Initializing the configuration. Download depedency plugings 
+$ terraform plan   #Dry run and it will show how many resources/changes are going to create 
 
-$ terraform apply  #Apply and create the resources
+$ terraform apply  #Apply and create the resources/configuration. Execute our configuration files
 $ terraform apply -auto-approve #It will not ask yes 'confirm' to process the steps
 
-$ terraform destroy #Delete the resources
+$ terraform destroy #Delete the resources/configuration
 $ terraform destroy -auto-approve
 
-$ terraform show   #Current status of your configuration
+$ terraform show   #Current existing status of your configuration
 $ terraform state list #Current state short description
 
