@@ -24,6 +24,12 @@ $ terraform destroy -auto-approve
 $ terraform show   #Current existing status of your configuration
 $ terraform state list #Current state short description
 
-$ terraform plan -out myplan-01
+$ terraform plan -out myplan-01      #Create plan name
 
-$ terraform apply myplan-01
+$ terraform apply myplan-01          # Apply above plan 
+
+$ terraform plan destroy      #Show the output what is going to destroy
+$ terraform destroy           #Destroy the resources
+
+$ terraform plan -h          #Get the more supported perameter for plan
+
