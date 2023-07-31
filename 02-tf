@@ -1,1 +1,12 @@
+Terraform provider
 
+1) Core (Linux, Mac, Windows)                                    #Where do you want to install
+2) Plugins/provider (Aws, Azure,Google, Kubernetes, VmWare)      #Where do you want to configure/apply your code
+3) Upstream APIs
+
+
+
+Download Terraform link:
+  https://terraform.io
+  https://developer.hashicorp.com/terraform/downloads?product_intent=terraform
+  https://registry.terraform.io/
