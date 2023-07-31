@@ -1,0 +1,17 @@
+Configuration provider
+
+$ vi vars.tf [$vi terraform.tf]
+# Configuration the AWS Provider
+provider "aws" {
+  region = "us-east-1"
+  access_key = "AKIDH847663GDRE"              #Not recommended here
+  secret_key = "wuhshgs6geb46ghfjr8d7hd7"     #Not recommended here
+}
+
+
+
+
+Process to expose aws key
+  $ export AWS_ACCESS_KEY="AKIHHEGD736GDT4GE"
+  $ export AWS_SECRET_KEY="kjshfidhcuhdc7e65w7rfywvffwv"
+
