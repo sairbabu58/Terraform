@@ -7,12 +7,12 @@ Terraform State:
 
 
 $ terraform -help
-$ terraform version
+$ terraform -version
 
+$ terraform init   #Initializing the configuration. Download depedency plugings 
 $ terraform fmt   #Make the right format on the files. space and indent ..etc
 $ terraform validate filename.tf  #Validate the syntax, code, vars and ..etc
 
-$ terraform init   #Initializing the configuration. Download depedency plugings 
 $ terraform plan   #Dry run and it will show how many resources/changes are going to create 
 
 $ terraform apply  #Apply and create the resources/configuration. Execute our configuration files
