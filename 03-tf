@@ -4,10 +4,24 @@ $ vi vars.tf [$vi terraform.tf]
 # Configuration the AWS Provider
 provider "aws" {
   region = "us-east-1"
+}
+
+
+# Configuration the AWS Provider
+provider "aws" {
+  region = "us-east-1"
   access_key = "AKIDH847663GDRE"              #Not recommended here
   secret_key = "wuhshgs6geb46ghfjr8d7hd7"     #Not recommended here
 }
 
+
+
+
+# Configuration the AWS Provider
+provider "aws" {
+  region = "us-east-1"
+  shared_credentials_file = "/home/babuni/.aws/creds" 
+}
 
 
 
