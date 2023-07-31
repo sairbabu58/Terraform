@@ -24,3 +24,6 @@ $ terraform destroy -auto-approve
 $ terraform show   #Current existing status of your configuration
 $ terraform state list #Current state short description
 
+$ terraform plan -out myplan-01
+
+$ terraform apply myplan-01
