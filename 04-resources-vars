@@ -54,7 +54,7 @@ tags = {
 
 =========
 
-$ treeaform plan 
+$ terraform plan 
 vars.variables_sub_auto_ip
     enter a value: [true]
 
