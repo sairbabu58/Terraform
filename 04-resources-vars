@@ -1,6 +1,7 @@
 Example for declare resources and variables
 
 
+## Create resources file
 
 $ vi main.tf
 
@@ -15,6 +16,9 @@ tags = {
   Terraform  =  "true"
  }
 }
+----------------------------------------------------------------------
+
+## Create variables file
 
 
 $ vi vars.tf
@@ -33,9 +37,10 @@ variable "variables_sub_auto_ip" {
   type        = "bool"
 }
 
+----------------------------------------------------------------------
 
 
-=====
+## Replace resources value as variable
 
 $ vi main.tf
 
@@ -51,8 +56,11 @@ tags = {
  }
 }
 
+----------------------------------------------------------------------
 
-=========
+
+
+## Apply/Execute the terraform script
 
 $ terraform plan 
 vars.variables_sub_auto_ip
@@ -64,3 +72,25 @@ vars.variables_sub_az
 vars.variables_sub_cidr
      enter a value: 10.0.0./24
     
+
+----------------------------------------------------------------------
+
+## Create defaut variables
+
+variable "variables_sub_cird" {
+  description = "CIRD block for the variable subnet"
+  type        = "string"
+  default     = "10.10.0.0/24"
+}
+
+variable "variables_sub_az" {
+  description = "Availability zone variable subnet"
+  type        = "string"
+  default     = "us-east-1a"
+}
+
+variable "variables_sub_auto_ip" {
+  description = "Set Automatic IP assign variable subnet"
+  type        = "bool"
+  default     = "true"
+}
