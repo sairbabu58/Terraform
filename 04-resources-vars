@@ -1,1 +1,66 @@
+Example for declare resources and variables
 
+
+
+$ vi main.tf
+
+resources "aws_subnet" "variables-subnet" {
+  vpc_ip                    =  "asw_vpc.vpc.id"
+  cidr_block                =  "10.1.0.0/24"
+  availability_zone         =  "us-east-1a"
+  map_public_ip_on_launch   =  "true"
+
+tags = {
+  Name   =  "abc"
+  Terraform  =  "true"
+ }
+}
+
+
+$ vi vars.tf
+variable "variables_sub_cird" {
+  description = "CIRD block for the variable subnet"
+  type        = "string"
+}
+
+variable "variables_sub_az" {
+  description = "Availability zone variable subnet"
+  type        = "string"
+}
+
+variable "variables_sub_auto_ip" {
+  description = "Set Automatic IP assign variable subnet"
+  type        = "bool"
+}
+
+
+
+=====
+
+$ vi main.tf
+
+resources "aws_subnet" "variables-subnet" {
+  vpc_ip                    =  asw_vpc.vpc.id
+  cidr_block                =  vars.variables_sub_cird
+  availability_zone         =  vars.variables_sub_az
+  map_public_ip_on_launch   =  vars.variables_sub_auto_ip
+
+tags = {
+  Name   =  "abc"
+  Terraform  =  "true"
+ }
+}
+
+
+=========
+
+$ treeaform plan 
+vars.variables_sub_auto_ip
+    enter a value: [true]
+
+vars.variables_sub_az
+    enter a values: [us-east-1a]
+
+vars.variables_sub_cidr
+     enter a value: 10.0.0./24
+    
