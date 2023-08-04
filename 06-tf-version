@@ -1,0 +1,31 @@
+#How  to specify the terraform version
+
+
+$ terraform version
+
+$ vi terraform.tf
+
+terraform {
+  required_version = ">=1.0.0"
+
+}
+
+
+
+or
+
+terraform {
+  required_version = "=1.0.0"
+
+}
+
+
+or
+
+terraform {
+  required_version = "<=1.0.0"
+
+}
+
+$ terraform init
+
