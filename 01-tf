@@ -28,7 +28,7 @@ $ terraform plan -out myplan-01      #Create plan name
 
 $ terraform apply myplan-01          # Apply above plan 
 
-$ terraform plan destroy      #Show the output what is going to destroy
+$ terraform plan destroy      #Show the output what is going to be destroy
 $ terraform destroy           #Destroy the resources
 
 $ terraform plan -h          #Get the more supported perameter for plan
