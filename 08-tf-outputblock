@@ -1,3 +1,4 @@
+Example-01
 
 $ vi output.tf
 
@@ -9,3 +10,40 @@ output "vpc_id" {
     description = "Output the ID for the primary VPC"
     value = aws_vpc.vpc.id
 }
+
+
+Example-02
+
+output "web_server_ip" {
+    description = "Public IP Address of Web Server on EC2" 
+    value = aws_instance.web_server.public_ip     
+    sensitive = true
+}
+
+
+Example-03
+
+output "public_url" {
+    description = "Public URL for our Web Server"
+    value = "https://${aws_instance.web_server.private_ip}:8080/index.html"
+}
+output "vpc_information" {
+    description = "VPC Information about Environment"
+    value = "Your ${aws_vpc.vpc.tags.Environment} VPC has an ID of ${aws_vpc.vpc.id}"
+}
+
+
+
+$ terraform apply ---autp-approve
+
+Outputs:
+
+hello-world = "Hello World"
+public_url = "https://10.0.101.10:8080/index.html"
+vpc_id = "vpc-058d23c9d5d2f70b5"
+vpc_information = "Your demo_environment VPC has an ID of vpc-058d23c9d5d2f70b5"
+
+
+$ terraform output
+
+$ terraform output -json
