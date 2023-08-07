@@ -102,3 +102,42 @@ terraform {
     }
   }
 }
+
+
+
+
+
+# How to upgrade or downgrade provider
+
+
+$ vi your-file.tf
+
+terraform {
+  required_version = ">= 1.0.0"
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+    }
+    http = {
+      source = "hashicorp/http"
+      version = "2.5.0"
+    }
+    random = {
+      source = "hashicorp/random"
+      version = "3.0.0"
+    }
+    local = {
+      source = "hashicorp/local"
+      version = "2.0.0"
+    }
+  }
+}
+
+
+
+$ terraform init -upgrade
+
+# validation
+$ terraform version
+$ vi .terraform.lock.hcl
+
