@@ -29,3 +29,20 @@ terraform {
 
 $ terraform init
 
+
+
+
+# Terrarom version and terraform aws plugin version
+
+$ vi terraform.ft
+terraform {
+  required_version = ">= 1.0.0"
+  required_providers {
+    aws = {
+    source = "hashicorp/aws"
+    version = "~> 3.0"
+    }
+  }
+}
+
+$ terraform init
