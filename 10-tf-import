@@ -1,4 +1,6 @@
 #How to import existing resources to terraform code.
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance#import
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#import
 
 Example:
     1) main.tf file having some code for create some of resources, like VPC, Subnet ....etc. not code for create any instance
@@ -13,7 +15,9 @@ main.tf
 provider "aws" {
   region = "us-west-2"
 }
-resource "aws_instance" "aws_linux" {}
+resource "aws_instance" "aws_linux" {
+
+}
 
 # now import the resources to terraform code 
 $ terraform import aws_instance.aws_linux <existing-instance-id>
@@ -23,10 +27,11 @@ $ terraform plan
 Note: may be you will get some error. below command is to fix the issues.
 
 
-$ terraform state list
-$ terraform state show aws_instance.aws_linux
-Add the missing values or variables.
+$ terraform state list (get the resource tag)
+$ terraform state show aws_instance.aws_linux (use the resource tag here)
+collect and add the missing values or variables on the main.tf file
 
+$ terraform fmt
 $ terraform plan
 $ terraform apply
 
