@@ -1,0 +1,41 @@
+# create terraform workspace for different env
+
+Example: 
+  1) you have already code for us-east-1
+  2) now you want to deplay same resources on us-west-2
+  3) for that create a new workspace and replace us-east-1 to us-west-2
+
+$ terraform workspace
+$ terraform workspace -help
+$ terraform workspace new development
+$ terraform workspace list
+$ terraform workspace show
+$ terraform workspace select default/development/prod
+$ terraform show
+
+$ terraform show (no resources are available)
+
+#edit the code and update us-east-1 to us-west-2
+
+$ terraform show
+$ terraform plan 
+$ terraform apply
+
+
+
+
+
+$ vi main.tf
+provider "aws" {
+  region = "us-west-2"
+  default_tags {
+    tags = {
+      Environment = terraform.workspace
+      Owner = "TF Hands On Lab"
+      Project = "Infrastructure as Code"
+      Terraform = "true"
+      }
+    }
+}
+
+
