@@ -1,0 +1,33 @@
+#How to import existing resources to terraform code.
+
+Example:
+    1) main.tf file having some code for create some of resources, like VPC, Subnet ....etc. not code for create any instance
+    2) go ahead and create a instance on aws/azure console with all the details
+    3) now import created new instance details to terraform code
+
+
+
+
+main.tf
+
+provider "aws" {
+  region = "us-west-2"
+}
+resource "aws_instance" "aws_linux" {}
+
+# now import the resources to terraform code 
+$ terraform import aws_instance.aws_linux <existing-instance-id>
+$ terraform import aws_instance.aws_linux i-0098362563256325
+
+$ terraform plan
+Note: may be you will get some error. below command is to fix the issues.
+
+
+$ terraform state list
+$ terraform state show aws_instance.aws_linux
+Add the missing values or variables.
+
+$ terraform plan
+$ terraform apply
+
+
