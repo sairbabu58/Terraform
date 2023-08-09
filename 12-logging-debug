@@ -1,0 +1,16 @@
+# how to enable code debug mode
+
+Enable log level:
+
+$ export TF_LOG=TRACE
+$ export TF_LOG=DEBUG
+
+$ terraform apply
+$ terraform init 
+
+$ terraform TF_LOG_PATH="terraform_log.txt"
+
+
+Disable log level:
+
+export TF_LOG=""
