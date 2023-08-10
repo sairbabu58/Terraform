@@ -45,6 +45,9 @@ $ terraform provider
 $ terraform init
 $ terraform provider
 
+
+==
+
 $ vi terraform.tf
 
 terraform {
@@ -80,3 +83,31 @@ terraform {
 $ terraform provider
 $ terrraform init
 $ terraform provider
+
+
+====
+
+$ vi main.tf
+
+module "s3-bucket_example_complete" {
+  source = "terraform-aws-modules/s3-bucket/aws/examples/complete"
+  version = "2.10.0"
+}
+
+$ terraform init
+$ terraform provider
+
+
+
+=====
+
+$ vi main.tf
+
+module "s3-bucket_example_complete" {
+  source = "terraform-aws-modules/s3-bucket/aws/examples/complete"
+  version = "2.12.0"
+}
+
+$ terraform init -upgrade
+$ terraform provider
+
