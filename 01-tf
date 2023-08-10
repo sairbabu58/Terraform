@@ -33,3 +33,12 @@ $ terraform destroy           #Destroy the resources
 
 $ terraform plan -h          #Get the more supported perameter for plan
 
+
+
+
+$ terraform apply 
+
++   => Resource will be create
+-   => Resource will be destroyed
+~   => Resource will be updated in-place
+-/+ => Resource will be destroyed and re-created
