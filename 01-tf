@@ -34,11 +34,50 @@ $ terraform destroy           #Destroy the resources
 $ terraform plan -h          #Get the more supported perameter for plan
 
 
+====================================
 
+#terraform plan is a dry-run command.
+Execute this command and validate what are resources are going to add, delete, modify and replace
 
-$ terraform apply 
+$ terraform plan
 
 +   => Resource will be create
 -   => Resource will be destroyed
 ~   => Resource will be updated in-place
 -/+ => Resource will be destroyed and re-created
+
+
+$ terraform plan --help
+$ terraform plan -out myplan (it will create a file and you will get the plan details over there)
+$ terraform show myplan
+
+
+$ terraform plan -replace-only
+
+Exampl:
+-> go to the amazon webconsole -> search and click the ec2 instance -> add some additional tags key1: value1  team: devops
+
+$ terraform plan -replace-only (it will show the latest changes on web-console side)
+
+
+
+=============================
+
+#terraform apply command 
+
+$ terraform apply
+$ terraform apply -auto-approve
+
+$ terraform plan myplan-01
+
+$ terraform apply myplan-01
+$ terraform apply myplan-02
+
+
+
+=====================================
+
+$ terraform destroy
+$ terraform destroy -auto-approve
+
+
