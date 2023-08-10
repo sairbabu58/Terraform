@@ -97,7 +97,7 @@ module "s3-bucket_example_complete" {
 $ terraform init
 $ terraform provider
 
-
+Note: it will create a module directory structure and you will get the installed module details.
 
 =====
 
