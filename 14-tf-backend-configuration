@@ -1,0 +1,8 @@
+#We can configure backend for terraform.
+#terraform code will available based on backend configuration location
+
+
+Backend:
+  1) Local Backend Configuration
+  2) S3 Backend Configuration
+  3) Remote Backend Configuration (terraform console) 
