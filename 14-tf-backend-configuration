@@ -14,3 +14,35 @@ https://developer.hashicorp.com/terraform/language/settings/backends/http
 
 https://www.terraform.io/
 [Docs -> Search -> backend configuration]
+
+
+
+
+
+Remote Backend configuration:
+------------------------------
+
+  1) Creata an account on terraform console https://www.terraform.io/  (try Terraform Cloud)
+  2) Creata an organization (j2ctechnologies)
+  3) Create a workspace (dev-env)
+  3) From your machine execute $ terraform login command
+  4) 'YES' Generate a new token and use it to login terraform console.
+  
+  5) add the backend configuration code to your terraform.tf file (you can get this file from your terraform webconsole under organization->workspace)
+  terraform {
+  cloud {
+    organization = "j2ctechnologies"
+
+    workspaces {
+      name = "dev-env"
+    }
+  }
+}
+
+  6) $ terraform init
+  7) $ terraform apply
+
+
+
+
+
