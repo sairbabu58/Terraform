@@ -46,7 +46,11 @@ Remote Backend configuration:
 Issues Details:
  1) If $ terraform apply is not woking, please delete the local 'terraform.tfstate and terraform.tfstate.backup files from your correct local directory'
  2) If you are planning to deploy any resources on aws/azure cloud env and you have already export key/cert on localy, it does not work. you have to provide those credential detals over terraform console.
-        -> organization -> workspace -> 
+        -> organization -> workspace -> choose your workspace -> variable -> add veriable -> Choose 'Environment variable'
+                                                                                                              key: AWS_ACCESS_KEY_ID      value: 873872egdbsajdbabd
+                                                                                                              key: AWS_SECRET_ACCESS_KEY  value: dwfsjnfs673t76e72
+
+                                                                                      
 
 
 
