@@ -50,10 +50,67 @@ Issues Details:
                                                                                                               key: AWS_ACCESS_KEY_ID      value: 873872egdbsajdbabd
                                                                                                               key: AWS_SECRET_ACCESS_KEY  value: dwfsjnfs673t76e72
 
+
+
+
+
+==============================================================================================================
+
+
+#Migrate the code from remote backend to local backend.
+
+  1) Configured the file for remote backend configuration.(follow the above steps)
+  2) Migrate remote backend to local backend 
+  3 $ vi terraform.tf
+  4) Remove the remote backend block. (Note: terraform default backend is local backend. so no need to configure additional perameter)
+  5) $ terraform validate
+  6) $ terraform init -migrate-state
+  7) $ terraform state list
+      
+
                                                                                       
 
+#Migrate the code from local backend to s3 backend.
+
+  1) Now your codes are available on local backend storage
+  2) Configure the terraform.tf file and update the below code to migrate S3 backend (Note: please configure the S3 bucket, get the S3 bucket details and export the secret key and acess token)
+  3) Edit the configuration and update the S3 backend details.
+      $ vi terraform.tf
+
+  terraform {
+    backend "s3" {
+      bucket = "my-terraform-state-ghm"
+      key = "prod/aws_infra"
+      region = "us-east-1"
+      dynamodb_table = "terraform-locks"
+      encrypt = true
+    }
+}
+
+$ terraform validate
+$ terraform init -migrate-state
+      - yes
+$ terraform state list
+$ login to S3 bucket and validate the code
 
 
 
+#Migrate the code from s3 backend to remote backend.
 
+  1) Now your codes are available on S3 backend storage
+  2) Configure the terraform.tf file and update the below code to migrate remote backend (Note: Please login and configure the terraform console for remote backend)
+  3) Edit the configuration and update the S3 backend details.
+      $ vi terraform.tf
+terraform {
+    backend "remote" {
+    hostname = "app.terraform.io"
+    organization = "Enterprise-Cloud"
+    workspaces {
+    name = "my-aws-app"
+    }
+  }
+}
 
+$ terraform validate
+$ terraform init -migration-state
+$ terraform state list
