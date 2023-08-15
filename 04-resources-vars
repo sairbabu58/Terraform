@@ -5,7 +5,7 @@ Example for declare resources and variables
 
 $ vi main.tf
 
-resources "aws_subnet" "variables-subnet" {
+resource "aws_subnet" "variables-subnet" {
   vpc_ip                    =  "asw_vpc.vpc.id"
   cidr_block                =  "10.1.0.0/24"
   availability_zone         =  "us-east-1a"
@@ -44,7 +44,7 @@ variable "variables_sub_auto_ip" {
 
 $ vi main.tf
 
-resources "aws_subnet" "variables-subnet" {
+resource "aws_subnet" "variables-subnet" {
   vpc_ip                    =  asw_vpc.vpc.id
   cidr_block                =  vars.variables_sub_cird
   availability_zone         =  vars.variables_sub_az
