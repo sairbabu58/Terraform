@@ -2,7 +2,15 @@
 #terraform code will available based on backend configuration location
 
 
-Backend:
+Backend Types:
   1) Local Backend Configuration
   2) S3 Backend Configuration
   3) Remote Backend Configuration (terraform console) 
+  4) Http Backend Configuration
+
+https://developer.hashicorp.com/terraform/language/settings/backends/local
+https://developer.hashicorp.com/terraform/language/settings/backends/s3
+https://developer.hashicorp.com/terraform/language/settings/backends/http
+
+https://www.terraform.io/
+[Docs -> Search -> backend configuration]
