@@ -34,7 +34,7 @@ $ terraform init
 
 # Terrarom version and terraform aws plugin version
 
-$ vi terraform.ft
+$ vi terraform.tf
 terraform {
   required_version = ">= 1.0.0"
   required_providers {
