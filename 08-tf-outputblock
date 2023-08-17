@@ -47,3 +47,60 @@ vpc_information = "Your demo_environment VPC has an ID of vpc-058d23c9d5d2f70b5"
 $ terraform output
 
 $ terraform output -json
+
+
+
+=============================================
+
+
+$ output.tf
+
+output "public_ip" {
+    description = "This is the public IP of my web server"
+    value = aws_instance.web_server.public_ip
+}
+
+...
+
+$ terraform apply -auto-approve
+
+public_ip = "44.200.207.151"
+public_url = "https://10.0.101.169:8080/index.html"
+vpc_id = "vpc-0dcd2b053088ea107"
+vpc_information = "Your demo_environment VPC has an ID of vpc-0
+dcd2b053088ea107"
+
+
+
+...
+
+$ terraform output
+$ terraform output public_ip
+
+$ ping $(terraform output -raw public_dns)
+
+
+...
+
+$ output.tf
+
+output "ec2_instance_arn" {
+    value = aws_instance.web_server.arn
+    sensitive = true
+}
+
+$ terraform apply -auto-approve 
+
+Outputs:
+    ec2_instance_arn = <sensitive>
+    hello-world = "Hello World"
+    public_ip = "44.200.207.151"
+    public_url = "https://10.0.101.169:8080/index.html"
+    vpc_id = "vpc-0dcd2b053088ea107"
+    vpc_information = "Your demo_environment VPC has an ID of vpc-0dcd2b053088ea107"
+
+
+...
+
+$ terraform plan -out=myplan-01
+$ terraform apply myplan-01
