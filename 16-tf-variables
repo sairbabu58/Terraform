@@ -46,3 +46,36 @@ resource "aws_instance" "web_server" {
 ...
 tags = local.common_tags
 }
+
+
+
+
+
+===================================================
+
+
+# Over write the default and other variables
+
+
+$ export TF_VAR_variables_sub_cidr="10.0.203.0/24"
+
+
+
+
+
+...
+
+$ vi terraform.tfvars.
+
+# Public Subnet Values
+variables_sub_auto_ip = true
+variables_sub_az = "us-east-1d"
+variables_sub_cidr = "10.0.204.0/24"
+
+
+$ terraform plan 
+
+$ terraform plan -var variables_sub_az="us-east-1e" -var variables_sub_cidr="10.0.205.0/24"
+
+
+
