@@ -1,0 +1,77 @@
+#How to use vault in terraform code for secure your sensitive data.
+
+Simple data:
+
+variable "phone_number" {
+  type = string
+  sensitive = true
+  default = "867-5309"
+}
+output "phone_number" {
+  value = var.phone_number
+  sensitive = true
+}
+
+
+$ terraform apply
+
+
+
+
+Vault data:
+
+$ install vault on your local machine
+$ vault version
+
+$ vault server -dev (start vault server)
+...
+You may need to set the following environment variable:
+$ export VAULT_ADDR='http://127.0.0.1:8200'
+The unseal key and root token are displayed below in case you want to
+seal/unseal the Vault or re-authenticate.
+Unseal Key: 1zqTTWCHyAvEhTqOLurR2nQPeeoR1Sk2FMp95fRNEaU=
+Root Token: s.Oi1tQPY98uwWQ6HOf9T7Elkg
+Development mode should NOT be used in production installations!
+...
+
+$ export VAULT_ADDR="http://127.0.0.1:8200" 
+
+$ vault login <root token>
+$ vault kv put /secret/app phone_number=867-5309 (/secret/app is the path. key=phone_number value=867-5309)
+
+
+$ vi main.tf
+provider "vault" {
+  address = "http://127.0.0.1:8200"
+  token = <root token>
+}
+data "vault_generic_secret" "phone_number" {
+  path = "secret/app"
+}
+
+output "phone_number" {
+  value = data.vault_generic_secret.phone_number
+}
+
+$ terraform init
+$ terraform apply
+
+Note: this way it will not work. you have to mention the 'sensitive=true'
+
+output "phone_number" {
+  value = data.vault_generic_secret.phone_number
+  sensitive = true
+}
+
+$ terraform apply
+$ terraform output phone_number
+
+# list only phone number
+output "phone_number" {
+  value = data.vault_generic_secret.phone_number.data["phone_number"]
+  sensitive = true
+}
+
+$ terraform output phone_number
+
+
