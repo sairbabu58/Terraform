@@ -1,0 +1,56 @@
+# you can change the default terraform lifecycle process.
+Example:
+  1) If you are modified the existing terraform code and apply it. the process will check the code and destroy the old resources and replace/create
+  new resources.
+
+
+existing resource name "core-sg"
+...
+resource "aws_security_group" "main" {
+  name = "core-sg"
+  vpc_id = aws_vpc.vpc.id
+  }
+...
+
+new resource name "core-sg-global"
+...
+resource "aws_security_group" "main" {
+  name = "core-sg-global"
+  vpc_id = aws_vpc.vpc.id
+  }
+...
+
+In this case it will 1st destroy the resource "core-sg" and create new reource called "core-sg-global". this the terraform default process.
+
+# our scenario is here, we have to change the default execution process to:-
+- create_before_destroy
+- prevent_destroy
+
+
+...
+resource "aws_security_group" "main" {
+  name = "core-sg-global"
+  vpc_id = aws_vpc.vpc.id
+  }
+lifecycle {
+  create_before_destroy = true
+}
+...
+
+$ terraform init
+$ terraform plan
+$ terraform apply
+
+
+...
+resource "aws_security_group" "main" {
+  name = "core-sg-global"
+  vpc_id = aws_vpc.vpc.id
+  }
+lifecycle {
+  create_before_destroy = true
+  prevent_destroy = true
+}
+...
+
+$ terraform destroy -auto-approve
