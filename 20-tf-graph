@@ -1,0 +1,25 @@
+# See your resources deployed status as a graph 
+
+$ vi main.tf
+$ vi main.tf
+
+resource "aws_subnet" "variables-subnet" {
+  vpc_ip                    =  asw_vpc.vpc.id
+  cidr_block                =  vars.variables_sub_cird
+  availability_zone         =  vars.variables_sub_az
+  map_public_ip_on_launch   =  vars.variables_sub_auto_ip
+
+tags = {
+  Name   =  "abc"
+  Terraform  =  "true"
+ }
+}
+
+$ terraform init
+$ terraform apply
+$ terraform graph
+
+# get the above output code
+# open the browser and use this link (http://www.webgraphviz.com/)
+# update the code inside of the box.
+# generate graph
