@@ -1,0 +1,27 @@
+
+
+
+$ vi main.yaml
+
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "PUT-YOUR-ACCESS-KEY-HERE"
+  secret_key = "PUT-YOUR-SECRET-KEY-HERE"
+}
+
+resource "aws_instance" "server-1" {
+    ami = "ami-00c39f71452c08778"
+    instance_type = "t2.micro"
+    
+    tags = {
+    Name = "server-1"
+  }
+}
+
+$ terraform fmt
+$ terraform init
+$ terraform validate
+$ terraform providers
+$ terraform plan
+$ terraform apply
+$ terraform destrroy
