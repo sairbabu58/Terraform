@@ -20,7 +20,7 @@ provider "aws" {
 # Configuration the AWS Provider
 provider "aws" {
   region = "us-east-1"
-  shared_credentials_file = "/home/babuni/.aws/creds" 
+  shared_credentials_files = "/home/babuni/.aws/creds" 
 }
 
 
