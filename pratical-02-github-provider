@@ -2,6 +2,10 @@
 
 https://registry.terraform.io/providers/integrations/github/latest/docs
 
+# create the token on github
+  -> login to github url -> profile -> setting -> developer settings -> persinoal access tokens -> fine-grained tokens
+        -> generate new token -> name 'terraform' -> all repositories -> repositories permission -> administration -> read and write.
+
 $ vi git.tf
 
 terraform {
