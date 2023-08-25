@@ -1,0 +1,28 @@
+# how to destroy all the resources created by terraform
+# how to destroy specific resourses created by terraform
+# how to destroy the resources using code commit
+
+
+# create resources using pratical-01 and pratical-02 files
+
+$ terraform state list 
+  aws_instance.server-1
+  github_repository.example
+
+$ terraform destroy
+
+$ terraform destroy -target aws_instance.server-1
+
+$ terraform destroy 
+
+
+# if you want to destroy a perticular resourse, just commit the code on the code block and execute below command.
+/*
+...
+...
+...
+*/
+
+$ terraform plan 
+$ terraform destroy
+
