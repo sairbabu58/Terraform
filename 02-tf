@@ -1,12 +1,78 @@
-Terraform provider
-
-1) Core (Linux, Mac, Windows)                                    #Where do you want to install
-2) Plugins/provider (Aws, Azure,Google, Kubernetes, VmWare)      #Where do you want to configure/apply your code
-3) Upstream APIs
 
 
 
-Download Terraform link:
-  https://terraform.io
-  https://developer.hashicorp.com/terraform/downloads?product_intent=terraform
-  https://registry.terraform.io/
+$ terraform -help
+$ terraform -version
+
+$ terraform init   #Initializing the configuration. Download depedency plugings 
+$ terraform fmt   #Make the right format on the files. space and indent ..etc
+$ terraform validate filename.tf  #Validate the syntax, code, vars and ..etc
+
+$ terraform plan   #Dry run and it will show how many resources/changes are going to create 
+
+$ terraform apply  #Apply and create the resources/configuration. Execute our configuration files
+$ terraform apply -auto-approve #It will not ask yes 'confirm' to process the steps
+
+$ terraform destroy #Delete the resources/configuration
+$ terraform destroy -auto-approve
+
+$ terraform show   #Current existing status of your configuration
+$ terraform state list #Current state short description
+
+$ terraform plan -out myplan-01      #Create plan name
+
+$ terraform apply myplan-01          # Apply above plan 
+
+$ terraform plan destroy      #Show the output what is going to be destroy
+$ terraform destroy           #Destroy the resources
+
+$ terraform plan -h          #Get the more supported perameter for plan
+
+
+====================================
+
+#terraform plan is a dry-run command.
+Execute this command and validate what are resources are going to add, delete, modify and replace
+
+$ terraform plan
+
++   => Resource will be create
+-   => Resource will be destroyed
+~   => Resource will be updated in-place
+-/+ => Resource will be destroyed and re-created
+
+
+$ terraform plan --help
+$ terraform plan -out myplan (it will create a file and you will get the plan details over there)
+$ terraform show myplan
+
+
+$ terraform plan -replace-only
+
+Exampl:
+-> go to the amazon webconsole -> search and click the ec2 instance -> add some additional tags key1: value1  team: devops
+
+$ terraform plan -replace-only (it will show the latest changes on web-console side)
+
+
+
+=============================
+
+#terraform apply command 
+
+$ terraform apply
+$ terraform apply -auto-approve
+
+$ terraform plan myplan-01
+
+$ terraform apply myplan-01
+$ terraform apply myplan-02
+
+
+
+=====================================
+
+$ terraform destroy
+$ terraform destroy -auto-approve
+
+
