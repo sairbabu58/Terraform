@@ -60,30 +60,3 @@ terraform {
 provider "aws" {
   # Configuration options
 }
-
-
-$ terraform init (working fine)
-
-
-....
-
-terraform {
-  required_providers {
-    aws = {
-      source = "hashicorp/aws" 
-      version = "~>4.0"  
-    }
-  }
-}
-
-provider "aws" {
-  # Configuration options
-}
-
-$ terraform init (it will not work. cause .terraform.lock.hcl file will block it. to make it run this command, please remove .terraform.lock.hcl file)
-$ terraform init 
-
-or
-
-$ terraform init -upgrade
-
