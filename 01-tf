@@ -18,3 +18,10 @@ Terraform provider
 1) Core (Linux, Mac, Windows)                                    #Where do you want to install
 2) Plugins/provider (Aws, Azure,Google, Kubernetes, VmWare)      #Where do you want to configure/apply your code
 3) Upstream APIs
+
+
+
+
+
+Terraform Desired state: what is the terraform existing code. and you can create resources using existing  terraform code. (example: ec2 instance=t2.micro)
+Terraform Current state: some one is manually stop the instance and edited the configuration. (example: instance from=t2.micro to=t2xlarge)
