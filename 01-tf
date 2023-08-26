@@ -1,4 +1,6 @@
 Terraform State:
+-----------------
+
  -> Manage and maintained the existing and latest changes. what is the current state and what going to change. the latest changes only applied.
      Task 1: Show current state
      Task 2: Update your configuration
@@ -13,7 +15,8 @@ Note:
 
 
 
-Terraform provider
+Terraform provider:
+-------------------
 
 1) Core (Linux, Mac, Windows)                                    #Where do you want to install
 2) Plugins/provider (Aws, Azure,Google, Kubernetes, VmWare)      #Where do you want to configure/apply your code
@@ -25,3 +28,37 @@ Terraform provider
 
 Terraform Desired state: what is the terraform existing code. and you can create resources using existing  terraform code. (example: ec2 instance=t2.micro)
 Terraform Current state: some one is manually stop the instance and edited the configuration. (example: instance from=t2.micro to=t2xlarge)
+
+
+
+
+
+
+terrafor: .terraform.lock.hcl:
+-------------------------------
+
+This file content terraform and provider version details.
+
+>5.0
+<5.0
+>=5.0
+<=5.0
+~5.0 (5.10, 5.25, 5.48 ...etc)
+>=4.0,<=5.0
+
+#https://registry.terraform.io/ -> browse provider -> aws -> click 'user provider'
+
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws" 
+      version = "5.14.0"  
+    }
+  }
+}
+
+provider "aws" {
+  # Configuration options
+}
+
+
