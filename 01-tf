@@ -83,3 +83,7 @@ provider "aws" {
 $ terraform init (it will not work. cause .terraform.lock.hcl file will block it. to make it run this command, please remove .terraform.lock.hcl file)
 $ terraform init 
 
+or
+
+$ terraform init -upgrade
+
