@@ -37,7 +37,7 @@ resource "aws_security_group" "allow_tls" {
   }
 }
 
-```
+```ruby
 $ terraform apply -auto-approve
 $ terraform destroy -auto-approve
 ```
