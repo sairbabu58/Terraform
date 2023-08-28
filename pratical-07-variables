@@ -58,10 +58,11 @@ provider "aws" {
 
 resource "aws_instance" "myec2" {
    ami = "ami-082b5a644766e0e6f"
-   instance_type = "var.instancetype"
+   instance_type = var.instancetype
 }
 
 ...
+#variable defaults
 
 $ vi variables.tf
 variable "instancetype" {
@@ -70,6 +71,48 @@ variable "instancetype" {
 
 ...
 
+
+
+
+
+
+#command line variables.
+# you can over write the vars value using -var=some-thing command
+
+$ terraform apply -var="instancetype=t2.small"
+
+
+
+
+
+
+
+#if not define any default value
+
+$ vi variables.tf
+variable "instancetype" {
+}
+
+$ terraform apply 
+Enter the instancetype: t2.micro (it will ask the valu during the execution)
+
+
+
+
+
+
+#create your env specific vars file and use that for building resources.
+#like instance type, SG, VPC, subnet EIP and so on.
+#Note extention name is .tfvars
+
+$ vi prod.tfvars
+$ vi dev.tfvars
+variable "instancetype" {
+  default = "t2.micro" # (or t2.large ..etc)
+}
+
+$ terraform apply -var-file="prod.tfvars"
+$ terraform apply -var-file="dev.tfvars"
 
 
 
