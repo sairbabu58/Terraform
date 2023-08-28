@@ -1,12 +1,12 @@
 
-
+...
 $ vi variables.tf
 
 variable "vpn_ip" {
   default = "116.50.30.50/32"
 }
 
-
+...
 $ vi main.tf
 
 provider "aws" {
