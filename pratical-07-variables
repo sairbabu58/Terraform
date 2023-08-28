@@ -41,3 +41,36 @@ resource "aws_security_group" "var_demo" {
 $ terraform apply -auto-approve
 $ terraform destroy -auto-approve
 
+
+
+
+
+
+
+
+# Advance variable declaration 
+
+$ main.tf
+
+provider "aws" {
+  region     = "us-west-2"
+}
+
+resource "aws_instance" "myec2" {
+   ami = "ami-082b5a644766e0e6f"
+   instance_type = "var.instancetype"
+}
+
+...
+
+$ vi variables.tf
+variable "instancetype" {
+  default = "t2.micro"
+}
+
+...
+
+
+
+
+
