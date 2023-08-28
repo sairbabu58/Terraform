@@ -9,6 +9,10 @@ variable "vpn_ip" {
 
 $ vi main.tf
 
+provider "aws" {
+  region = "us-east-1"
+}
+
 resource "aws_security_group" "var_demo" {
   name        = "j2c technologies"
 
