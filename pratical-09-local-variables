@@ -1,0 +1,50 @@
+
+
+
+$ vi main.tf
+
+provider "aws" {
+  region = "us-east-1"
+}
+
+locals {
+  Owner = "DevOps Team"
+  Server = "backend"
+  Team = "DevOps"
+  }
+
+resource "aws_instance" "myec2" {
+  ami           = "ami-082b5a644766e0e6f"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = local.Server
+    Owner = local.Owner
+    Team = local.Team
+  }
+}
+
+...
+
+provider "aws" {
+  region = "us-east-1"
+}
+
+locals {
+  tags = {
+    Owner = "DevOps Team"
+    Server = "backend"
+  }
+}
+resource "aws_instance" "myec2" {
+  ami           = "ami-082b5a644766e0e6f"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = local.tags.Server
+    Owner = local.tags.Owner
+    Team = local.tags.Team
+  }
+}
+
+
