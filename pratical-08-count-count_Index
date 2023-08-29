@@ -1,1 +1,44 @@
-p
+# create multiple ec2 instance or IAM user or load balancer
+
+
+$ vi main.tf
+
+provider "aws" {
+  region = "us-east-1"
+}
+resource "aws_instance" "myec2" {
+  ami           = "ami-082b5a644766e0e6f"
+  instance_type = "t2.micro"
+  count         = 3
+
+  tags = {
+    Name = "server
+  }
+}
+
+## Display: it will create 3 servers with the same name: server, server,server
+
+
+...
+
+provider "aws" {
+  region = "us-east-1"
+}
+resource "aws_instance" "myec2" {
+  ami           = "ami-082b5a644766e0e6f"
+  instance_type = "t2.micro"
+  count         = 3
+
+  tags = {
+    Name = "server-${count.index}"
+  }
+}
+
+## Display: it will create 3 servers with the name: server1, server2,server3
+
+
+
+.....
+
+
+
