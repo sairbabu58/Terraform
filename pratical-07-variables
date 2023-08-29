@@ -185,3 +185,47 @@ timeout="400"
 az=["us-west-1a","us-west-1b"]
 
 
+
+
+
+
+##############################################################
+
+
+$ vi main.tf
+
+
+resource "aws_instance" "myec2" {
+   ami = "ami-082b5a644766e0e6f"
+   instance_type = var.list[0]        #0=m5large, 1=m5.xlarge, 2=t2.medium
+}
+
+variable "list" {
+  type = list
+  default = ["m5.large","m5.xlarge","t2.medium"]
+
+....
+
+$ vi main.tf
+
+
+resource "aws_instance" "myec2" {
+   ami = "ami-082b5a644766e0e6f"
+   instance_type = var.type["large"]
+}
+
+variable "type" {
+  type = map
+  default = {
+    small = "t2.small"
+    large = "t2.large"
+    xlarge = "m2.large"
+  }
+}
+
+
+
+
+
+
+
