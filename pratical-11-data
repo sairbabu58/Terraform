@@ -1,0 +1,25 @@
+#Create an instance without hard code the AMI ID.
+#Create instance on multiple region like: us-east-1, eu-central-1, ap-south-1.
+# variable called data we have to use here for this example.
+
+
+provider "aws" {
+  region = "us-east-1" ##Note here
+}
+
+data "aws_ami" "app_ami" {
+  most_recent = true
+  owners = ["amazon"]    ##Amazon 
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm*"]          #Amazon OS (Create a manually VM and get the 'AMI name')
+#    values = ["RHEL-9.2.0_HVM*"]        #RHEL OS
+#    values = ["Windows_Server-2022*"]   #Windows OS
+  }
+}
+
+resource "aws_instance" "myec2" {
+   ami = data.aws_ami.app_ami.id
+   instance_type = "t2.micro"
+}
